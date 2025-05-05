@@ -12,8 +12,8 @@ syn keyword sprakRepeat         loop
 syn keyword sprakOperator       from to in and or
 
 syn match sprakComment /#.*/
-syn match sprakString /".*"/
-syn match sprakString /'.*'/
+syn match sprakString /".\{-}"/
+syn match sprakString /'.\{-}'/
 syn match sprakNumber "\<\d\+\>"
 syn match sprakNumber "\<\d\+\.\d\+\>"
 
