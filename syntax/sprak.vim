@@ -4,6 +4,15 @@
 " Maintainer:   Patrick Auernig
 " Last Change:  Mar 21, 2016
 
+if !exists('main_syntax')
+	if version < 600
+		syntax clear
+	elseif exists('b:current_syntax')
+		finish
+	endif
+	let main_syntax = 'sprak'
+endif
+
 syn keyword sprakStatement      return break
 syn keyword sprakConstant       true false
 syn keyword sprakType           void number string var array bool
@@ -177,3 +186,7 @@ hi def link sprakNumber         Number
 hi def link sprakBuiltin        Function
 hi def link sprakFunction       Function
 
+let b:current_syntax = 'sprak'
+if main_syntax ==# 'sprak'
+	unlet main_syntax
+endif
