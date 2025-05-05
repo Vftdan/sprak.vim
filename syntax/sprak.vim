@@ -13,12 +13,14 @@ if !exists('main_syntax')
 	let main_syntax = 'sprak'
 endif
 
+syn case ignore
 syn keyword sprakStatement      return break
 syn keyword sprakConstant       true false
 syn keyword sprakType           void number string var array bool
 syn keyword sprakConditional    if else end
 syn keyword sprakRepeat         loop
 syn keyword sprakOperator       from to in and or
+syn case match
 
 syn match sprakComment /#.*/
 syn match sprakString /".\{-}"/
