@@ -32,12 +32,12 @@ function! indent#sprak#get_indent(lnnum)
 	let l:pline = getline(l:plnum)
 	let l:line = getline(a:lnnum)
 
-	let l:maybe_begin = match(l:pline, '^\s*\%\(' . s:INDENT_KEYWORD_PTN . '\|' . s:FUNDECL_START_PTN . '\)')
+	let l:maybe_begin = match(l:pline, '^\c\s*\%\(' . s:INDENT_KEYWORD_PTN . '\|' . s:FUNDECL_START_PTN . '\)')
 	if s:is_not_comment(l:plnum, l:maybe_begin)
 		let l:lvl += shiftwidth()
 	endif
 
-	let l:maybe_end = match(l:line, '^\s*\%(' . s:OUTDENT_KEYWORD_PTN . '\)')
+	let l:maybe_end = match(l:line, '^\c\s*\%(' . s:OUTDENT_KEYWORD_PTN . '\)')
 	if s:is_not_comment(a:lnnum, l:maybe_end)
 		let l:lvl -= shiftwidth()
 	endif
@@ -46,5 +46,5 @@ function! indent#sprak#get_indent(lnnum)
 endfunction
 
 setlocal indentexpr=indent#sprak#get_indent(v:lnum)
-setlocal indentkeys+=0=end
+setlocal indentkeys+=0=~end,0=~else
 setlocal autoindent
